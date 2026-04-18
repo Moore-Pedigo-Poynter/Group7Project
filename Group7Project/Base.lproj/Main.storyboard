@@ -43,7 +43,7 @@
                     <navigationItem key="navigationItem" title="Password Generator" id="dgm-As-wRO">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lRJ-Mt-B6e">
                             <connections>
-                                <segue destination="ob3-T7-37m" kind="show" id="5L2-b1-3ze"/>
+                                <segue destination="ob3-T7-37m" kind="presentation" id="LcW-PU-l13"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -57,7 +57,7 @@
             <objects>
                 <viewController id="EXb-4H-RkQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ACE-9T-wXG">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="hyR-0W-RWF"/>
                         <color key="backgroundColor" red="0.44946383195938744" green="0.74529865711821064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -93,7 +93,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="pGu-X0-QJY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Fuc-Tu-ENO">
-                        <rect key="frame" x="0.0" y="118" width="393" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
