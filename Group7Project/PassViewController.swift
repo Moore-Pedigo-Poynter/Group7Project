@@ -20,6 +20,7 @@ class PassViewController: UIViewController {
     @IBOutlet weak var savePass: UIButton!
     
     var password = "" //Stores existing password string
+    var tempPassword = "" //Stores when hiding password
     var listVC: ListViewController? //List view controller object
     
     @IBAction func editedPassField(_ sender: Any) {
@@ -111,20 +112,17 @@ class PassViewController: UIViewController {
             passField.text = password
         }
         else {
+            tempPassword = password //Stores existing password
             passField.text = String(repeating: "*", count: password.count)
         }
     }
     
     @IBAction func savePassButton(_ sender: Any) {
-        // Needs to send the password property to the list in the other VC
+        // Sends the password property to the list in the other VC
         dismiss(animated: true)
-        guard let text = passField.text else {
-            return
-        }
-        //print(text) //Test
+        let text = password //Set text to currently generated password
         listVC?.passwordList.append(text) //optional chainning
         listVC?.passwordTableView.reloadData()
-        //print(listVC?.passwordList)
         dismiss(animated: true)
     }
     
