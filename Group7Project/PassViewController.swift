@@ -28,6 +28,7 @@ class PassViewController: UIViewController {
         // their password is invalid
         passField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
+        password = passField.text ?? "" 
         //Unwrapping passField.text
         savePass.isEnabled = (!passField.text!.isEmpty && (passField.text!.count >= 8))
     }
