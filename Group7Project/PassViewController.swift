@@ -19,7 +19,8 @@ class PassViewController: UIViewController {
     @IBOutlet weak var passField: UITextField!
     @IBOutlet weak var savePass: UIButton!
     
-    var password = ""
+    var password = "" //Stores existing password string
+    var listVC: ListViewController? //List view controller object
     
     @IBAction func editedPassField(_ sender: Any) {
         // Because we allow the user to edit their password directly, we have
@@ -116,7 +117,15 @@ class PassViewController: UIViewController {
     
     @IBAction func savePassButton(_ sender: Any) {
         // Needs to send the password property to the list in the other VC
-        
+        dismiss(animated: true)
+        guard let text = passField.text else {
+            return
+        }
+        //print(text) //Test
+        listVC?.passwordList.append(text) //optional chainning
+        listVC?.passwordTableView.reloadData()
+        //print(listVC?.passwordList)
+        dismiss(animated: true)
     }
     
     override func viewDidLoad() {
