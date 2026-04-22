@@ -20,18 +20,27 @@ class PassViewController: UIViewController {
     @IBOutlet weak var savePass: UIButton!
     
     var password = "" //Stores existing password string
-    var tempPassword = "" //Stores when hiding password
     var listVC: ListViewController? //List view controller object
     
     @IBAction func editedPassField(_ sender: Any) {
         // Because we allow the user to edit their password directly, we have
         // to revalidate it each time it's changed. We hide the save button if
         // their password is invalid
+        passField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        //Unwrapping passField.text
         savePass.isEnabled = (!passField.text!.isEmpty && (passField.text!.count >= 8))
     }
     
+    //Notifies if textField passField changes by user
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        password = passField.text ?? "" 
+        savePass.isEnabled = (!passField.text!.isEmpty && (passField.text!.count >= 8))
+    }
     
-    @IBAction func generateButton(_ sender: Any) {
+    //Function - Generates password using boolean values for settings
+    //  Improves the code organization and better shows generation process
+    func generatePassword(caps: Bool, lowers: Bool, nums: Bool, symbols: Bool){
         // These strings let us generate random valid characters. The symbols
         // may need to be altered if some aren't typically allowed in passwords
         let caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -91,6 +100,11 @@ class PassViewController: UIViewController {
         passArray.shuffle()
         
         password = String(passArray)
+    }
+    
+    @IBAction func generateButton(_ sender: Any) {
+        //Call generatePassword function
+        generatePassword(caps: capsEnabled.isOn, lowers: lowersEnabled.isOn, nums: numsEnabled.isOn, symbols: symbolsEnabled.isOn)
         
         // We use either asterisks or the characters depending on if we're wanting
         // it to be shown
@@ -112,7 +126,6 @@ class PassViewController: UIViewController {
             passField.text = password
         }
         else {
-            tempPassword = password //Stores existing password
             passField.text = String(repeating: "*", count: password.count)
         }
     }
